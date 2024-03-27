@@ -51,3 +51,22 @@ The primary objectives of this project include designing and implementing a full
     - Additionally, you'll need to map the services to the outside world using Domain Name System (DNS).
   
 **Noted that all of your source code must be pushed to your group's public GitHub repository.**
+
+## Useful resources
+1. Hardware programming
+   - The projects you had completed for the assignment.
+2. Database & Visualization
+   - Example of consumer file: [Python MQTT Tutorial: Store IoT Metrics with InfluxDB](https://thenewstack.io/python-mqtt-tutorial-store-iot-metrics-with-influxdb/?utm_content=buffer401c3&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+   - InfluxDB client library for readind and writing data: [InfluxDB client libraries](https://docs.influxdata.com/influxdb/v1/tools/api_client_libraries/)
+   - Develop Grafana dashboard using data from InfluxDB [Get started with Grafana and InfluxDB](https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-influxdb/) 
+3. Data Analytics
+   - Lecture slides in MCV
+   - Example of performimg real-time prediction using python [Performing Real-Time Predictions Using Machine Learning, GridDB and Python](https://griddb.net/en/blog/performing-real-time-predictions-using-machine-learning-griddb-and-python/)
+4. Edge & Cloud Operator
+   - Setting up SSH and hostname in Raspberry Pi [Connecting to your Raspberry Pi via SSH](https://raspberrypi-guide.github.io/networking/connecting-via-ssh#connecting-via-ssh)
+   - Docker Installation on Raspberry Pi [Here's How to Install Docker on Raspberry Pi?](https://www.simplilearn.com/tutorials/docker-tutorial/raspberry-pi-docker)
+   - [Install EMQX MQTT broker using Docker](https://www.emqx.io/docs/en/latest/deploy/install-docker.html)
+   - [Containerize application](https://docs.docker.com/get-started/02_our_app/)
+   - [Deploying Workloads on Rancher](https://ranchermanager.docs.rancher.com/v2.0-v2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads)
+5. Git
+   - All members should be able to utilize commands such as git add, commit, push, and pull to communicate between your local repository and the public GitHub repository. [Git Tutorial by w3schools](https://www.w3schools.com/git/)
