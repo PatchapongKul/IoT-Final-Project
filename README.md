@@ -15,8 +15,8 @@ Engineering, Faculty of Engineering, Chulalongkorn University, Bangkok Thailand
 ---
 
 ## System Architecture
-![Alt text](/IoT-Final-Project/Diagram.svg)
-![Alt text](/IoT-Final-Project/Dataflow.svg)
+![Alt text](/Diagram.svg)
+![Alt text](/Dataflow.svg)
 The primary objectives of this project include designing and implementing a full-stack IoT system and deploying all services to run in a real operating environment. Therefore, collaboration with teammates is essential to develop a comprehensive system, utilizing GitHub as our workspace for development.
 
 ### System components
