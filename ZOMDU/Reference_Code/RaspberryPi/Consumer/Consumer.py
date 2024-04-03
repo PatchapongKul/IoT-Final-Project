@@ -47,26 +47,9 @@ def on_message(client, userdata, msg):
     """ The callback for when a PUBLISH message is received from the server."""
     print(msg.topic+" "+str(msg.payload))
 
-<<<<<<< HEAD
     # Write data in InfluxDB
-=======
-    print('==== json ====')
-    #print(json.dumps(msg.payload))
->>>>>>> c9ac9fc13b7c6208c749bab264a19875588af0f0
     payload = json.loads(msg.payload)
-    print(type(payload))
     write_to_influxdb(payload)
-    json_data = json.dumps(payload)
-    print(json_data)
-    post_to_predict(json_data)
-
-# Function to post to real-time prediction endpoint
-def post_to_predict(data):
-    response = requests.post(predict_url, data=data)
-    if response.status_code == 200:
-        print("POST request successful")
-    else:
-        print("POST request failed!", response.status_code)
 
     # POST data to predict the output label
     json_data = json.dumps(payload)
