@@ -6,6 +6,7 @@ from influxdb_client import InfluxDBClient, Point
 from influxdb_client.client.write_api import ASYNCHRONOUS
 import paho.mqtt.client as mqtt
 import json
+import requests
 
 load_dotenv()
 # InfluxDB config
@@ -16,11 +17,14 @@ token=str(os.environ.get('INFLUXDB_TOKEN')),org=os.environ.get('INFLUXDB_ORG'))
 write_api = client.write_api()
  
 # MQTT broker config
-MQTT_BROKER_URL = str(os.environ.get('MQTT_URL'))
+MQTT_BROKER_URL = os.environ.get('MQTT_URL')
 MQTT_PUBLISH_TOPIC = "@msg/data"
 print("connecting to MQTT Broker", MQTT_BROKER_URL)
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
-mqttc.connect(MQTT_BROKER_URL)
+mqttc.connect(MQTT_BROKER_URL,1883)
+
+# REST API endpoint for predicting output
+predict_url = os.environ.get('PREDICT_URL')
  
 def on_connect(client, userdata, flags, rc, properties):
     """ The callback for when the client connects to the broker."""
@@ -33,9 +37,22 @@ def on_message(client, userdata, msg):
     """ The callback for when a PUBLISH message is received from the server."""
     print(msg.topic+" "+str(msg.payload))
 
-    print('payload ====', msg.payload.decode())
+    print('==== json ====')
+    #print(json.dumps(msg.payload))
     payload = json.loads(msg.payload)
+    print(type(payload))
     write_to_influxdb(payload)
+    json_data = json.dumps(payload)
+    print(json_data)
+    post_to_predict(json_data)
+
+# Function to post to real-time prediction endpoint
+def post_to_predict(data):
+    response = requests.post(predict_url, data=data)
+    if response.status_code == 200:
+        print("POST request successful")
+    else:
+        print("POST request failed!", response.status_code)
 
 # Function to write data to InfluxDB
 def write_to_influxdb(data):
