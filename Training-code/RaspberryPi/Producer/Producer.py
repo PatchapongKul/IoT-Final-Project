@@ -4,7 +4,7 @@ This script is used for generating the sample data from the "test_cases.csv"
 and publish them to the MQTT Broker
 """
 
-#Importing relevant modules
+# Importing relevant modules
 import pandas as pd
 import time
 import paho.mqtt.client as mqtt
