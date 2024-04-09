@@ -8,7 +8,7 @@ as the endpoint for data feeding.
 # Importing relevant modules
 import joblib
 import pandas as pd
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import os
 from influxdb_client import InfluxDBClient, Point
@@ -48,21 +48,16 @@ def predict():
     try:
         # Get JSON text from the request
         json_text = request.data
-
         # Convert JSON text to JSON object
         json_data = json.loads(json_text)
-
         # Add to dataframe
         query = pd.DataFrame([json_data])
-
         # Extract features and label from data
         feature_sample = query[model_columns]
         target_sample = query['Room_Occupancy_Count'][0]
-
         # Predict the number of people inside the room
         predict_sample = knn_model.predict(feature_sample)
-        print("Actual Room Occupancy Count", target_sample,"\tPredicted output:", predict_sample[0])
-
+        print("Actual Room Occupancy Count", int(target_sample),"\tPredicted output:", int(predict_sample[0]))
         # Assign the true label and predicted label into Point
         point = Point("predict_value")\
             .field("Actual_Occupancy_Count", target_sample)\
@@ -70,8 +65,7 @@ def predict():
         
         # Write that Point into database
         write_api.write(BUCKET, os.environ.get('INFLUXDB_ORG'), point)
-
-        return "Model predicted and put in database", 200
+        return jsonify({"Actual Room Occupancy Count": int(target_sample), "Predicted output": int(predict_sample[0])}), 200
     
     except:
         # Something error with data or model

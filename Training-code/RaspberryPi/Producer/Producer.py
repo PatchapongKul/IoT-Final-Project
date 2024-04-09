@@ -21,12 +21,13 @@ mqttc.connect(MQTT_BROKER_URL)
 df = pd.read_csv('test_cases.csv')
 
 # Iterate over each row in the DataFrame
-for index, row in df[0:400:20].iterrows():
-    payload = row.to_dict()
+for start_idx in range(10):
+    for index, row in df[start_idx:400:10].iterrows():
+        payload = row.to_dict()
 
-    # publish the data to MQTT Broker
-    mqttc.publish(MQTT_PUBLISH_TOPIC, json.dumps(payload))
-    print(f"Published new measurement: {json.dumps(payload)}")
+        # publish the data to MQTT Broker
+        mqttc.publish(MQTT_PUBLISH_TOPIC, json.dumps(payload))
+        print(f"Published new measurement: {json.dumps(payload)}")
 
-    # define data generating frequency
-    time.sleep(5)
+        # define data generating frequency
+        time.sleep(2)
