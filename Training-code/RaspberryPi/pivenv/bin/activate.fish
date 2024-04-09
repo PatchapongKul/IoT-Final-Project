@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/pi-group-7/IoT-Final-Project/ZOMDU/Reference Code/RaspberryPi/pivenv"
+set -gx VIRTUAL_ENV "/home/pi-group-0/IoT-Final-Project/Training-code/RaspberryPi/pivenv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

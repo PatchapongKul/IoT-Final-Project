@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/pi-group-7/IoT-Final-Project/ZOMDU/Reference Code/RaspberryPi/pivenv/bin/python3" "$0" "$@"
-' '''
+#!/home/pi-group-0/IoT-Final-Project/Training-code/RaspberryPi/pivenv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

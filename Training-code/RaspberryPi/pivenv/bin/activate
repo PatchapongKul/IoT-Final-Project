@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/pi-group-7/IoT-Final-Project/ZOMDU/Reference Code/RaspberryPi/pivenv"
+VIRTUAL_ENV="/home/pi-group-0/IoT-Final-Project/Training-code/RaspberryPi/pivenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
